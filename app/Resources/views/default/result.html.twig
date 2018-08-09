@@ -1,0 +1,9 @@
+<div>
+    {% if url is defined and url != null %}
+        <p>Your short link: <strong>{{ url('shrtlnk_redirect',{ slug : url.shortLink}) }}</strong></p>
+        <p>You can see statistic on this page: <strong>{{ url('shrtlnk_statistic',{ slug : url.shortLink}) }}</strong>
+        </p>
+    {% else %}
+        <p>pls check your data, link can't be generated</p>
+    {% endif %}
+</div>

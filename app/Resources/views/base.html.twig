@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Short link{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/jquery-ui-1.12.1/jquery-ui.css') }}">
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/jquery-3.3.1.js') }}"></script>
+            <script src="{{ asset('assets/js/shrt_url.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery-ui-1.12.1/jquery-ui.js') }}"></script>
+            <script type="text/javascript">
+                var ajax_url = "{{ path("shrtlnk_create") }}";
+            </script>
+        {% endblock %}
+    </body>
+</html>

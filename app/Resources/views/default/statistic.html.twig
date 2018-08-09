@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center">
+        <h1> Statistic of url usage : </h1>
+        <h2> {{ url('shrtlnk_redirect',{ slug : url.shortLink}) }} </h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">Link:</div>
+            <div class="col-md-8"> {{ url('shrtlnk_redirect',{ slug : url.shortLink}) }} </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Original link:</div>
+            <div class="col-md-8"> {{ url.origLink }} </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Total requests:</div>
+            <div class="col-md-8"> {{ requests|length }} </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><h4>Location statistic</h4></div>
+            <div class="col-md-8">
+                <table class="table-bordered table-light">
+                    <tr>
+                        <th>Location</th>
+                        <th>Requests</th>
+                        <th> %</th>
+                    </tr>
+                    {% for loc in locations %}
+                        <tr>
+                            <td> {{ loc.location }}</td>
+                            <td>{{ loc.cnt }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4"><h4>Requests data statistic</h4></div>
+            <div class="col-md-8">
+                <table class="table-bordered table-light">
+                    <tr>
+                        <th>Request time</th>
+                        <th> Query string</th>
+                        <th>HTTP Referer</th>
+                        <th> User agent</th>
+                        <th>IP</th>
+                        <th>remote_host</th>
+                    </tr>
+                    {% for req in requests %}
+                        <tr>
+                            <td>{{ req.requestTime }}</td>
+                            <td>{{ req.queryString }}</td>
+                            <td>{{ req.httpReferer }}</td>
+                            <td>{{ req.httpUserAgent }}</td>
+                            <td>{{ req.remoteAddr }}</td>
+                            <td>{{ req.remoteHost }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
